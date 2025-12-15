@@ -149,9 +149,11 @@ export default function Home() {
                       <span key={stop} className="text-xs border px-2 py-1 rounded-md">{stop}</span>
                     ))}
                   </div>
-                  <div className="mt-4 flex items-center justify-between">
+                  <div className="mt-4 flex items-center justify-between gap-2">
                     <span className="font-bold text-lg text-secondary">From ${itinerary.price}</span>
-                    <Button variant="outline" size="sm">View Details</Button>
+                    <Link href={`/generate-handbook`}>
+                      <Button variant="outline" size="sm">Create Handbook</Button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>

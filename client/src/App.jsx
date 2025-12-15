@@ -8,6 +8,8 @@ import Explore from "@/pages/Explore";
 import Itinerary from "@/pages/Itinerary";
 import Tools from "@/pages/Tools";
 import Features from "@/pages/Features";
+import DestinationDetails from "@/pages/DestinationDetails";
+import HandbookGenerator from "@/pages/HandbookGenerator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -16,9 +18,11 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/explore" component={Explore} />
+        <Route path="/destination/:id" component={DestinationDetails} />
         <Route path="/itinerary" component={Itinerary} />
         <Route path="/tools" component={Tools} />
         <Route path="/features" component={Features} />
+        <Route path="/generate-handbook" component={HandbookGenerator} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

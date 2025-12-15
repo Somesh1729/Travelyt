@@ -1,28 +1,49 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search, SlidersHorizontal, Download, Eye, Globe } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { destinations } from "@/lib/mockData";
+import { Link } from "wouter";
+import { jsPDF } from "jspdf";
 
 export default function Explore() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("All");
+  const [selectedCountry, setSelectedCountry] = useState("All");
 
   const tags = ["All", "Adventure", "Beach", "History", "Nature", "Romance", "Culture"];
+  
+  // Extract unique countries
+  const countries = ["All", ...new Set(destinations.map(d => d.country))];
 
   const filteredDestinations = destinations.filter(dest => {
     const matchesSearch = dest.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           dest.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesTag = selectedTag === "All" || dest.tags.includes(selectedTag);
-    return matchesSearch && matchesTag;
+    const matchesCountry = selectedCountry === "All" || dest.country === selectedCountry;
+    return matchesSearch && matchesTag && matchesCountry;
   });
+
+  const handleQuickDownload = (e, dest) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const doc = new jsPDF();
+    doc.setFontSize(20);
+    doc.text(dest.name, 20, 20);
+    doc.setFontSize(12);
+    doc.text(`Country: ${dest.country}`, 20, 30);
+    doc.text(doc.splitTextToSize(dest.description, 170), 20, 45);
+    doc.save(`${dest.name}_Snapshot.pdf`);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       <div className="space-y-4">
         <h1 className="text-4xl font-bold">Explore the World</h1>
+        
+        {/* Search and Filter Bar */}
         <div className="flex flex-col md:flex-row gap-4 items-center">
           <div className="relative flex-1 w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
@@ -33,11 +54,21 @@ export default function Explore() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <Button variant="outline" className="h-12 gap-2">
-            <SlidersHorizontal className="w-4 h-4" /> Filters
-          </Button>
+          <div className="flex gap-2">
+             <select 
+               className="h-12 px-4 rounded-md border bg-background"
+               value={selectedCountry}
+               onChange={(e) => setSelectedCountry(e.target.value)}
+             >
+               {countries.map(c => <option key={c} value={c}>{c === "All" ? "All Countries" : c}</option>)}
+             </select>
+             <Button variant="outline" className="h-12 gap-2">
+               <SlidersHorizontal className="w-4 h-4" /> Filters
+             </Button>
+          </div>
         </div>
         
+        {/* Tags */}
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
           {tags.map(tag => (
             <Button
@@ -52,6 +83,7 @@ export default function Explore() {
         </div>
       </div>
 
+      {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredDestinations.map((dest, index) => (
           <motion.div
@@ -67,6 +99,11 @@ export default function Explore() {
                   alt={dest.name} 
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
+                <div className="absolute bottom-2 left-2">
+                   <Badge variant="secondary" className="backdrop-blur-md bg-black/50 text-white border-none flex gap-1">
+                     <Globe className="w-3 h-3" /> {dest.country}
+                   </Badge>
+                </div>
               </div>
               <CardHeader>
                 <CardTitle className="flex justify-between">
@@ -82,8 +119,15 @@ export default function Explore() {
                   ))}
                 </div>
               </CardContent>
-              <CardFooter className="border-t pt-4">
-                <Button className="w-full">View Details</Button>
+              <CardFooter className="border-t pt-4 grid grid-cols-2 gap-3">
+                <Link href={`/destination/${dest.id}`}>
+                  <Button variant="outline" className="w-full gap-2">
+                    <Eye className="w-4 h-4" /> Preview
+                  </Button>
+                </Link>
+                <Button className="w-full gap-2" onClick={(e) => handleQuickDownload(e, dest)}>
+                  <Download className="w-4 h-4" /> Download
+                </Button>
               </CardFooter>
             </Card>
           </motion.div>

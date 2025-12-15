@@ -201,9 +201,11 @@ export default function Features() {
                   </div>
                 ))}
               </div>
-              <Button size="lg" className="rounded-full px-8 bg-primary hover:bg-primary/90">
-                Generate My Handbook Now
-              </Button>
+              <Link href="/generate-handbook">
+                <Button size="lg" className="rounded-full px-8 bg-primary hover:bg-primary/90">
+                  Generate My Handbook Now
+                </Button>
+              </Link>
             </div>
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary to-secondary opacity-30 blur-2xl rounded-full" />
