@@ -12,6 +12,7 @@ export default function Navbar() {
   const links = [
     { href: "/", label: "Home", icon: Compass },
     { href: "/explore", label: "Explore", icon: Map },
+    { href: "/features", label: "Features", icon: Crown },
     { href: "/tools", label: "Tools", icon: Calculator },
     { href: "/itinerary", label: "Itinerary", icon: Map },
   ];

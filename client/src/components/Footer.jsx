@@ -11,11 +11,12 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary">About Us</a></li>
-              <li><a href="#" className="hover:text-primary">Careers</a></li>
               <li><a href="#" className="hover:text-primary">Blog</a></li>
+              <li><a href="#" className="hover:text-primary">Help Center</a></li>
+              <li><a href="#" className="hover:text-primary">Travel Guides</a></li>
+              <li><a href="#" className="hover:text-primary">API Documentation</a></li>
             </ul>
           </div>
 

@@ -7,6 +7,7 @@ import Home from "@/pages/Home";
 import Explore from "@/pages/Explore";
 import Itinerary from "@/pages/Itinerary";
 import Tools from "@/pages/Tools";
+import Features from "@/pages/Features";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/explore" component={Explore} />
         <Route path="/itinerary" component={Itinerary} />
         <Route path="/tools" component={Tools} />
+        <Route path="/features" component={Features} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
