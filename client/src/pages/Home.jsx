@@ -27,8 +27,8 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-display font-bold leading-tight"
           >
-            Discover Your <br />
-            <span className="text-secondary">Next Adventure</span>
+            Velara <br />
+            <span className="text-secondary text-4xl md:text-6xl font-light italic">Beyond Horizons</span>
           </motion.h1>
           
           <motion.p 
@@ -37,7 +37,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light"
           >
-            Personalized itineraries, hidden gems, and unforgettable experiences.
+            AI-powered travel planning for the modern explorer.
           </motion.p>
           
           <motion.div
@@ -46,7 +46,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Link href="/explore">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-6 text-lg">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-primary/25 transition-all">
                 Start Exploring <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
@@ -70,7 +70,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="overflow-hidden group cursor-pointer border-none shadow-lg hover:shadow-xl transition-shadow">
+              <Card className="overflow-hidden group cursor-pointer border-none shadow-lg hover:shadow-xl transition-shadow h-full flex flex-col">
                 <div className="relative h-64 overflow-hidden">
                   <img 
                     src={dest.image} 
@@ -88,7 +88,7 @@ export default function Home() {
                     <span className="text-lg text-primary font-bold">${dest.price}</span>
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   <p className="text-muted-foreground text-sm line-clamp-2">{dest.description}</p>
                 </CardContent>
                 <CardFooter className="pt-0">
@@ -127,16 +127,16 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="bg-card rounded-xl overflow-hidden shadow-sm border flex flex-col md:flex-row h-full md:h-64"
+                className="bg-card rounded-xl overflow-hidden shadow-sm border flex flex-col md:flex-row"
               >
-                <div className="w-full md:w-1/2 relative">
+                <div className="w-full md:w-2/5 relative h-48 md:h-auto">
                   <img 
                     src={itinerary.image} 
                     alt={itinerary.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-6 flex flex-col justify-center gap-4 w-full md:w-1/2">
+                <div className="p-6 flex flex-col justify-center gap-4 w-full md:w-3/5">
                   <div>
                     <h3 className="text-xl font-bold mb-1">{itinerary.title}</h3>
                     <div className="flex items-center gap-2 text-muted-foreground text-sm">
@@ -149,7 +149,7 @@ export default function Home() {
                       <span key={stop} className="text-xs border px-2 py-1 rounded-md">{stop}</span>
                     ))}
                   </div>
-                  <div className="mt-auto flex items-center justify-between">
+                  <div className="mt-4 flex items-center justify-between">
                     <span className="font-bold text-lg text-secondary">From ${itinerary.price}</span>
                     <Button variant="outline" size="sm">View Details</Button>
                   </div>

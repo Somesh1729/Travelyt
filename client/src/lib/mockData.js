@@ -1,3 +1,8 @@
+import generatedKyoto from "@assets/generated_images/kyoto_streets_at_night_with_lanterns.png";
+import generatedSantorini from "@assets/generated_images/santorini_caldera_view_with_blue_domes.png";
+import generatedMachuPicchu from "@assets/generated_images/machu_picchu_misty_mountain_view.png";
+import generatedIceland from "@assets/generated_images/northern_lights_over_icelandic_waterfall.png";
+
 export const destinations = [
   {
     id: 1,
@@ -5,8 +10,9 @@ export const destinations = [
     description: "Iconic white-washed buildings with blue domes overlooking the crystal clear Aegean Sea. Perfect for romance and relaxation.",
     price: 1200,
     rating: 4.8,
-    image: "https://images.unsplash.com/photo-1613395877344-13d4c79e4df1?auto=format&fit=crop&q=80&w=800",
+    image: generatedSantorini,
     tags: ["Romance", "Beach", "History"],
+    dailyCost: 150,
   },
   {
     id: 2,
@@ -14,8 +20,9 @@ export const destinations = [
     description: "Ancient temples, traditional tea houses, and sublime zen gardens. A journey into the heart of Japanese culture.",
     price: 1500,
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800",
+    image: generatedKyoto,
     tags: ["Culture", "History", "Nature"],
+    dailyCost: 180,
   },
   {
     id: 3,
@@ -23,8 +30,9 @@ export const destinations = [
     description: "The Lost City of the Incas, high in the Andes mountains. A bucket-list adventure for hikers and history buffs.",
     price: 1800,
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&q=80&w=800",
+    image: generatedMachuPicchu,
     tags: ["Adventure", "Hiking", "History"],
+    dailyCost: 120,
   },
   {
     id: 4,
@@ -34,6 +42,7 @@ export const destinations = [
     rating: 4.7,
     image: "https://images.unsplash.com/photo-1533052061298-63916960d70b?auto=format&fit=crop&q=80&w=800",
     tags: ["Nature", "Hiking", "Skiing"],
+    dailyCost: 160,
   },
   {
     id: 5,
@@ -43,6 +52,7 @@ export const destinations = [
     rating: 4.8,
     image: "https://images.unsplash.com/photo-1542259679450-1a3978f60383?auto=format&fit=crop&q=80&w=800",
     tags: ["Beach", "Relaxation", "Nature"],
+    dailyCost: 250,
   },
   {
     id: 6,
@@ -50,8 +60,39 @@ export const destinations = [
     description: "Gateway to the land of fire and ice. Northern lights, geysers, and stunning waterfalls await.",
     price: 1600,
     rating: 4.6,
-    image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&q=80&w=800",
+    image: generatedIceland,
     tags: ["Adventure", "Nature", "Cold"],
+    dailyCost: 200,
+  },
+  {
+    id: 7,
+    name: "Paris, France",
+    description: "The City of Light. Experience world-class art, fashion, gastronomy, and culture.",
+    price: 1400,
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=800",
+    tags: ["Culture", "Romance", "Food"],
+    dailyCost: 220,
+  },
+  {
+    id: 8,
+    name: "New York City, USA",
+    description: "The city that never sleeps. Iconic landmarks, Broadway shows, and diverse neighborhoods.",
+    price: 1800,
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1496442226666-8d4a0e62e6e9?auto=format&fit=crop&q=80&w=800",
+    tags: ["Urban", "Culture", "Food"],
+    dailyCost: 300,
+  },
+  {
+    id: 9,
+    name: "Cape Town, South Africa",
+    description: "Stunning coastal views, Table Mountain, and vibrant culture at the tip of Africa.",
+    price: 1300,
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&q=80&w=800",
+    tags: ["Nature", "Beach", "Adventure"],
+    dailyCost: 130,
   },
 ];
 
@@ -70,6 +111,22 @@ export const popularItineraries = [
     duration: "14 Days",
     stops: ["Tokyo", "Seoul", "Bangkok"],
     price: 3000,
-    image: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&q=80&w=800",
+    image: generatedKyoto,
+  },
+  {
+    id: 3,
+    title: "Nordic Adventure",
+    duration: "8 Days",
+    stops: ["Reykjavik", "Oslo", "Stockholm"],
+    price: 2200,
+    image: generatedIceland,
+  },
+  {
+    id: 4,
+    title: "South American Odyssey",
+    duration: "12 Days",
+    stops: ["Lima", "Cusco", "Machu Picchu"],
+    price: 1900,
+    image: generatedMachuPicchu,
   },
 ];
