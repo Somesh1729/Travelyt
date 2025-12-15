@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { 
   BookOpen, Globe, Shield, Smartphone, Users, Zap, 
   Map as MapIcon, Download, Sparkles, Check, Crown, Star 

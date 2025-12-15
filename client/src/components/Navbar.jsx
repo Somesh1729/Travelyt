@@ -20,8 +20,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/">
-          <a className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
               <Compass className="w-5 h-5 text-white" />
             </div>
@@ -31,20 +30,15 @@ export default function Navbar() {
                 <Crown className="w-2 h-2 mr-1" /> PRO
               </Badge>
             </span>
-          </a>
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <a
-                className={`text-sm font-medium transition-colors hover:text-primary flex items-center gap-1 ${
+            <Link key={link.href} href={link.href} className={`text-sm font-medium transition-colors hover:text-primary flex items-center gap-1 ${
                   location === link.href ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
+                }`}>
                 {link.label}
-              </a>
             </Link>
           ))}
           <Button variant="default" className="rounded-full px-6 bg-primary hover:bg-primary/90">
@@ -63,15 +57,10 @@ export default function Navbar() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col gap-6 mt-8">
                 {links.map((link) => (
-                  <Link key={link.href} href={link.href}>
-                    <a
-                      onClick={() => setIsOpen(false)}
-                      className={`text-lg font-medium transition-colors hover:text-primary ${
+                  <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className={`text-lg font-medium transition-colors hover:text-primary ${
                         location === link.href ? "text-primary" : "text-muted-foreground"
-                      }`}
-                    >
+                      }`}>
                       {link.label}
-                    </a>
                   </Link>
                 ))}
                 <Button className="w-full bg-primary">Sign In</Button>

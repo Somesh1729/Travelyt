@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { destinations } from "@/lib/mockData";
 import { Link } from "wouter";
 import { jsPDF } from "jspdf";
+import { Badge } from "@/components/ui/badge";
 
 export default function Explore() {
   const [searchTerm, setSearchTerm] = useState("");
