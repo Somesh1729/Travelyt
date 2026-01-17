@@ -6,10 +6,10 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "lucide-react"
-import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
+import { DayPicker, getDefaultClassNames } from "react-day-picker";
 
-import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { cn } from "../../lib/utils";
+import { Button, buttonVariants } from "./button";
 
 function Calendar({
   className,
@@ -20,17 +20,18 @@ function Calendar({
   formatters,
   components,
   ...props
-}: React.ComponentProps<typeof DayPicker> & {
+}: Omit<React.ComponentProps<typeof DayPicker>, "variant"> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
 }) {
-  const defaultClassNames = getDefaultClassNames()
+  const defaultClassNames = getDefaultClassNames();
 
   return (
     <DayPicker
+      {...props}
       showOutsideDays={showOutsideDays}
       className={cn(
         "bg-background group/calendar p-3 [--cell-size:2rem] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
-        String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
+        String.raw`rtl:**:[.rdp-button_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className
       )}
@@ -172,12 +173,18 @@ function Calendar({
   )
 }
 
+interface CalendarDayButtonProps extends React.ComponentProps<typeof Button> {
+  className?: string
+  day: any
+  modifiers: any
+}
+
 function CalendarDayButton({
   className,
   day,
   modifiers,
   ...props
-}: React.ComponentProps<typeof DayButton>) {
+}: CalendarDayButtonProps) {
   const defaultClassNames = getDefaultClassNames()
 
   const ref = React.useRef<HTMLButtonElement>(null)
@@ -186,10 +193,11 @@ function CalendarDayButton({
   }, [modifiers.focused])
 
   return (
-    <Button
+    <button
       ref={ref}
-      variant="ghost"
-      size="icon"
+      type="button"
+      data-variant="ghost"
+      data-size="icon"
       data-day={day.date.toLocaleDateString()}
       data-selected-single={
         modifiers.selected &&
